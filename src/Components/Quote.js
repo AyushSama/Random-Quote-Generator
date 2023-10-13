@@ -47,8 +47,8 @@ export default function Quote(props) {
           </div>
         </div>
       )}
-      {!load && (<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <button type="button" class="btn btn-outline-success" onClick={handleClick}>New Quote!</button>
+      {!load && (<div className="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button type="button" className="btn btn-outline-success" onClick={handleClick}>New Quote!</button>
       </div>)}
     </div>
   );
