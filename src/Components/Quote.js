@@ -9,12 +9,14 @@ export default function Quote(props) {
 
   const updateQuote = async () => {
     try {
-      const response = await fetch("https://api.quotable.io/random");
+      const url = `https://api.quotable.io/quotes/random?tags=${props.type}` ;
+      console.log(url)
+      const response = await fetch(url);
       let ele = await response.json();
       setLoad(false);
-      setContent(ele.content);
-      setAuthor(ele.author);
-      setTags(ele.tags);
+      setContent(ele[0].content);
+      setAuthor(ele[0].author);
+      setTags(ele[0].tags);
     } catch {
       console.log("error");
     }
@@ -40,9 +42,9 @@ export default function Quote(props) {
             <h5 className="card-title">Quote</h5>
             <p className="card-text">{content}</p>
           </div>
-          <div className="card-footer bg-transparent border-success">
+          <div className="card-footer bg-transparent border-success">Tags -&nbsp; 
             {tags.map((tag, index) => (
-              <div key={index}>{tag}</div>
+              <span key={index}>{tag}&nbsp;</span>
             ))}
           </div>
         </div>
